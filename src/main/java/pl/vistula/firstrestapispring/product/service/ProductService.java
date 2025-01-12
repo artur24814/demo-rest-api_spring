@@ -8,6 +8,8 @@ import pl.vistula.firstrestapispring.product.domain.Product;
 import pl.vistula.firstrestapispring.product.repository.ProductRepository;
 import pl.vistula.firstrestapispring.product.support.ProductMapper;
 
+import javax.management.RuntimeErrorException;
+
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
@@ -20,6 +22,11 @@ public class ProductService {
 
     public ProductResponse create(ProductRequest productRequest) {
         Product product = productRepository.save(productMapper.toProduct(productRequest));
+        return productMapper.toProductResponse(product);
+    }
+
+    public ProductResponse find(Long id){
+        Product product = productRepository.findById(id).orElseThrow(RuntimeException::new);
         return productMapper.toProductResponse(product);
     }
 }
