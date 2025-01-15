@@ -10,7 +10,6 @@ import pl.vistula.firstrestapispring.product.repository.ProductRepository;
 import pl.vistula.firstrestapispring.product.support.ProductExceptionSupplier;
 import pl.vistula.firstrestapispring.product.support.ProductMapper;
 
-import javax.management.RuntimeErrorException;
 import java.util.List;
 import java.util.stream.Collectors;
 

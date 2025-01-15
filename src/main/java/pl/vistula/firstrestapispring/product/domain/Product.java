@@ -1,8 +1,22 @@
 package pl.vistula.firstrestapispring.product.domain;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+@Entity
 public class Product {
+
+    @Id
+    @GeneratedValue
     private Long id;
+
     private String name;
+
+    public Product() {
+        // Hibernate needs this
+    }
 
     public Product(String name) { this.name = name; }
 
