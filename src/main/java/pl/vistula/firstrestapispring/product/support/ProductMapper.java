@@ -13,6 +13,11 @@ public class ProductMapper {
         return new Product(productRequest.getName());
     }
 
+    public Product toProduct (Product product, ProductRequest productRequest){
+        product.setName(productRequest.getName());
+        return new Product(productRequest.getName());
+    }
+
     public ProductResponse toProductResponse (Product product){
         return new ProductResponse(product.getId(), product.getName());
     }

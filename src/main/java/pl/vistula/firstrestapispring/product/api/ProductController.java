@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
 
 import pl.vistula.firstrestapispring.product.api.request.ProductRequest;
+import pl.vistula.firstrestapispring.product.api.request.UpdateProductRequest;
 import pl.vistula.firstrestapispring.product.api.response.ProductResponse;
 import pl.vistula.firstrestapispring.product.service.ProductService;
 
@@ -30,6 +31,13 @@ public class ProductController {
     @Operation(summary = "Find Product by ID")
     public ResponseEntity<ProductResponse> find(@PathVariable Long id){
         ProductResponse productResponse = productService.find(id);
+        return ResponseEntity.status(HttpStatus.OK).body(productResponse);
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Update Product")
+    public ResponseEntity<ProductResponse> update(@PathVariable Long id, @RequestBody UpdateProductRequest updateProductRequest) {
+        ProductResponse productResponse = productService.update(id, updateProductRequest);
         return ResponseEntity.status(HttpStatus.OK).body(productResponse);
     }
 }
